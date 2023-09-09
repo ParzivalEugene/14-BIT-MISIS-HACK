@@ -17,7 +17,6 @@ enum TagsEnum {
   Design
   Linguistics
   Physics
-  Hobby
   Music
   Animals
   Programming
@@ -38,6 +37,11 @@ enum TagsEnum {
   Business
 }
 
+enum Sex {
+  Man
+  Woman
+}
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -49,49 +53,63 @@ datasource db {
 }
 
 model Photo {
-  id        Int    @id @default(autoincrement())
-  user      User   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    Int
+  id        Int      @id @default(autoincrement())
   imagePath String
+  Profile   Profile? @relation(fields: [profileId], references: [id])
+  profileId Int?
+}
+
+model Profile {
+  id         Int            @id @default(autoincrement())
+  user       User           @relation(fields: [userId], references: [id])
+  userId     Int            @unique
+  firstName  String
+  lastName   String
+  bio        String?        @db.VarChar(150)
+  sex        Sex
+  tags       String[]
+  university universityEnum
+  course     CourseEnum     @default(Bachelor)
+  photos     Photo[]
+
+  mainFriendId Int?
+  mainFriend   Profile?  @relation("MainFriend", fields: [mainFriendId], references: [id])
+  friends      Profile[] @relation("MainFriend")
+
+  randomMeetingPool   RandomMeetingPool @relation(fields: [randomMeetingPoolId], references: [id])
+  randomMeetingPoolId Int
+
+  matchingPoolMain      MatchingPool[] @relation("MatchingPoolMain")
+  matchingPoolSecondary MatchingPool[] @relation("MatchingPoolSecondary")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  banned    Boolean  @default(false)
+  deleted   Boolean  @default(false)
 }
 
 model User {
-  id                    Int               @id @default(autoincrement())
-  tgUsername            String            @unique
-  password              String
-  firstName             String            
-  lastName              String
-  bio                   String?           @db.VarChar(150)
-  tags                  String[]
-  university            universityEnum
-  course                CourseEnum       @default(Bachelor)
-  mainFriendId          Int?
-  mainFriend            User?             @relation("MainFriend", fields: [mainFriendId], references: [id])
-  friends               User[]            @relation("MainFriend")
-  photos                Photo[]
-  randomMeetingPool     RandomMeetingPool @relation(fields: [randomMeetingPoolId], references: [id])
-  randomMeetingPoolId   Int
-  matchingPoolMain      MatchingPool[]    @relation("MatchingPoolMain")
-  matchingPoolSecondary MatchingPool[]    @relation("MatchingPoolSecondary")
-  createdAt             DateTime          @default(now())
-  updatedAt             DateTime          @updatedAt
-  banned                Boolean           @default(false)
-  deleted               Boolean           @default(false)
+  id         Int      @id @default(autoincrement())
+  tgUsername String   @unique
+  password   String
+  profile    Profile?
 }
 
 model RandomMeetingPool {
-  id        Int      @id @default(autoincrement())
-  users     User[]
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id        Int       @id @default(autoincrement())
+  profiles  Profile[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model MatchingPool {
   id               Int      @id @default(autoincrement())
-  user             User     @relation("MatchingPoolMain", fields: [userId], references: [id], onDelete: Cascade)
-  userId           Int
-  possibleFriend   User     @relation("MatchingPoolSecondary", fields: [possibleFriendId], references: [id], onDelete: Cascade)
+  profile          Profile  @relation("MatchingPoolMain", fields: [profileId], references: [id], onDelete: Cascade)
+  profileId        Int
+  possibleFriend   Profile  @relation("MatchingPoolSecondary", fields: [possibleFriendId], references: [id], onDelete: Cascade)
   possibleFriendId Int
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
+
+  @@unique([profileId, possibleFriendId])
 }

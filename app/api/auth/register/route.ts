@@ -1,13 +1,22 @@
 import prisma from "@/lib/prisma";
-import { NextApiRequest, NextApiResponse } from "next";
 import { hash } from "bcrypt";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
-  const { email, password } = await req.json();
+  const {
+    tgUsername,
+    firstName,
+    lastName,
+    university,
+    bio,
+    course,
+    photos,
+    sex,
+    password,
+  } = await req.json();
   const exists = await prisma.user.findUnique({
     where: {
-      email,
+      tgUsername,
     },
   });
   if (exists) {
@@ -15,8 +24,22 @@ export async function POST(req: Request) {
   } else {
     const user = await prisma.user.create({
       data: {
-        email,
+        tgUsername,
         password: await hash(password, 10),
+        profile: {
+          create: {
+            firstName,
+            lastName,
+            university,
+            bio,
+            course,
+            photos,
+            sex,
+            randomMeetingPool: {
+              create: {},
+            },
+          },
+        },
       },
     });
     return NextResponse.json(user);

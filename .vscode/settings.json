@@ -1,3 +1,8 @@
 {
-  "discord.lowerDetailsEditing": "MISIS HACK 14 BIT"
+  "discord.lowerDetailsEditing": "MISIS HACK 14 BIT",
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "svg.preview.background": "editor"
 }

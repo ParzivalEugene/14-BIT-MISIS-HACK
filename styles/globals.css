@@ -1,3 +1,120 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Steppe";
+  src: url("../public/Steppe-Black.eot");
+  src: local("Steppe Black"), local("Steppe-Black"),
+    url("../public/Steppe-Black.eot?#iefix") format("embedded-opentype"),
+    url("../public/Steppe-Black.woff2") format("woff2"),
+    url("../public/Steppe-Black.woff") format("woff"),
+    url("../public/Steppe-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Steppe";
+  src: url("../public/Steppe-Book.eot");
+  src: local("Steppe Book"), local("Steppe-Book"),
+    url("../public/Steppe-Book.eot?#iefix") format("embedded-opentype"),
+    url("../public/Steppe-Book.woff2") format("woff2"),
+    url("../public/Steppe-Book.woff") format("woff"),
+    url("../public/Steppe-Book.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Steppe";
+  src: url("../public/Steppe-Bold.eot");
+  src: local("Steppe Bold"), local("Steppe-Bold"),
+    url("../public/Steppe-Bold.eot?#iefix") format("embedded-opentype"),
+    url("../public/Steppe-Bold.woff2") format("woff2"),
+    url("../public/Steppe-Bold.woff") format("woff"),
+    url("../public/Steppe-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Steppe";
+  src: url("../public/Steppe-ExtraBold.eot");
+  src: local("Steppe Extra Bold"), local("Steppe-ExtraBold"),
+    url("../public/Steppe-ExtraBold.eot?#iefix") format("embedded-opentype"),
+    url("../public/Steppe-ExtraBold.woff2") format("woff2"),
+    url("../public/Steppe-ExtraBold.woff") format("woff"),
+    url("../public/Steppe-ExtraBold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Steppe";
+  src: url("../public/Steppe-SemiBold.eot");
+  src: local("Steppe Semi Bold"), local("Steppe-SemiBold"),
+    url("../public/Steppe-SemiBold.eot?#iefix") format("embedded-opentype"),
+    url("../public/Steppe-SemiBold.woff2") format("woff2"),
+    url("../public/Steppe-SemiBold.woff") format("woff"),
+    url("../public/Steppe-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Steppe";
+  src: url("../public/Steppe-Medium.eot");
+  src: local("Steppe Medium"), local("Steppe-Medium"),
+    url("../public/Steppe-Medium.eot?#iefix") format("embedded-opentype"),
+    url("../public/Steppe-Medium.woff2") format("woff2"),
+    url("../public/Steppe-Medium.woff") format("woff"),
+    url("../public/Steppe-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Steppe";
+  src: url("../public/Steppe-Thin.eot");
+  src: local("Steppe Thin"), local("Steppe-Thin"),
+    url("../public/Steppe-Thin.eot?#iefix") format("embedded-opentype"),
+    url("../public/Steppe-Thin.woff2") format("woff2"),
+    url("../public/Steppe-Thin.woff") format("woff"),
+    url("../public/Steppe-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Steppe";
+  src: url("../public/Steppe-Regular.eot");
+  src: local("Steppe Regular"), local("Steppe-Regular"),
+    url("../public/Steppe-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../public/Steppe-Regular.woff2") format("woff2"),
+    url("../public/Steppe-Regular.woff") format("woff"),
+    url("../public/Steppe-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Steppe";
+  src: url("../public/Steppe-Light.eot");
+  src: local("Steppe Light"), local("Steppe-Light"),
+    url("../public/Steppe-Light.eot?#iefix") format("embedded-opentype"),
+    url("../public/Steppe-Light.woff2") format("woff2"),
+    url("../public/Steppe-Light.woff") format("woff"),
+    url("../public/Steppe-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
