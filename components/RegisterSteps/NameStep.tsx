@@ -17,7 +17,11 @@ interface NameStepProps {
   };
 }
 
-const NameStep: React.FC<NameStepProps> = ({ formStep, nextFormStep }) => {
+const NameStep: React.FC<NameStepProps> = ({
+  formStep,
+  nextFormStep,
+  data,
+}) => {
   const { setFormValues } = useFormData();
   const formRef = useRef();
   return (
@@ -26,10 +30,34 @@ const NameStep: React.FC<NameStepProps> = ({ formStep, nextFormStep }) => {
       <form>
         <div className="flex flex-col w-full gap-6">
           <div className="flex flex-col gap-4">
-            <Input variant="bordered" type="text" label="Имя" />
-            <Input variant="bordered" type="text" label="Фамилия" />
-            <Input variant="bordered" type="text" label="Telegram (через @)" />
-            <Input variant="bordered" type="password" label="Пароль" />
+            <Input
+              variant="bordered"
+              type="text"
+              label="Имя"
+              onChange={(e) => data.setFirstName(e.target.value)}
+              value={data.firstName}
+            />
+            <Input
+              variant="bordered"
+              type="text"
+              label="Фамилия"
+              onChange={(e) => data.setLastName(e.target.value)}
+              value={data.lastName}
+            />
+            <Input
+              variant="bordered"
+              type="text"
+              label="Telegram (через @)"
+              onChange={(e) => data.setTgUsername(e.target.value)}
+              value={data.tgUsername}
+            />
+            <Input
+              variant="bordered"
+              type="password"
+              label="Пароль"
+              onChange={(e) => data.setPassword(e.target.value)}
+              value={data.password}
+            />
           </div>
           <div className="flex flex-col gap-2">
             <h2 className="pl-4">Пол</h2>

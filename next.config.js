@@ -4,6 +4,9 @@ const nextConfig = {
     ignoreBuildErrors: true,
   },
   swcMinify: true,
+  images: {
+    domains: ["qucsmgttjfelqvwatpom.supabase.co"],
+  },
 };
 
 module.exports = nextConfig;

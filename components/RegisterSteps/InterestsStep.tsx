@@ -10,7 +10,7 @@ interface InterestsStepProps {
     setTags: (value: string[]) => void;
     bio: string;
     setBio: (value: string) => void;
-  }
+  };
 }
 
 const tags = [
@@ -31,9 +31,8 @@ const tags = [
 const InterestsStep: React.FC<InterestsStepProps> = ({
   formStep,
   nextFormStep,
+  data,
 }) => {
-  const [groupSelected, setGroupSelected] = React.useState([]);
-
   return (
     <>
       <h1 className="text-center font-bold text-2xl mb-6">Интересы</h1>
@@ -41,20 +40,22 @@ const InterestsStep: React.FC<InterestsStepProps> = ({
         <CheckboxGroup
           className="gap-1"
           orientation="horizontal"
-          value={groupSelected}
-          onChange={setGroupSelected}
+          value={data.tags}
+          onChange={data.setTags}
         >
           {tags.map((tag) => (
             <CustomCheckbox key={tag} value={tag}>
               {tag}
             </CustomCheckbox>
           ))}
-          <Textarea
-          className="mt-6"
-            labelPlacement="outside"
-            placeholder="Расскажи немного о себе"
-          />
         </CheckboxGroup>
+        <Textarea
+          className="mt-6"
+          labelPlacement="outside"
+          placeholder="Расскажи немного о себе"
+          onChange={(e) => data.setBio(e.target.value)}
+          value={data.bio}
+        />
       </form>
     </>
   );
