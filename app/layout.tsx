@@ -1,3 +1,4 @@
+import Provider from "@/components/Provider";
 import AuthStatus from "@/components/auth-status";
 import "@/styles/globals.css";
 import { Metadata } from "next";
@@ -21,16 +22,19 @@ export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
+  session: any;
 }) {
   return (
-    <html lang="en" className="dark font-steppe bg-[#0B011B]">
-      <body>
-        <Toaster />
-        <Suspense fallback="Loading...">
-          <AuthStatus />
-        </Suspense>
-        {children}
-      </body>
-    </html>
+    <Provider>
+      <html lang="en" className="dark font-steppe bg-[#0B011B]">
+        <body>
+          <Toaster />
+          <Suspense fallback="Loading...">
+            <AuthStatus />
+          </Suspense>
+          {children}
+        </body>
+      </html>
+    </Provider>
   );
 }

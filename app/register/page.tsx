@@ -4,6 +4,8 @@ import InterestsStep from "@/components/RegisterSteps/InterestsStep";
 import NameStep from "@/components/RegisterSteps/NameStep";
 import PhotosStep from "@/components/RegisterSteps/PhotosStep";
 import { Button, Progress, Spinner } from "@nextui-org/react";
+import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const Register = () => {
@@ -11,6 +13,8 @@ const Register = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [tgUsername, setTgUsername] = useState("");
+  const [sex, setSex] = useState("man");
+  const [course, setCourse] = useState("bachelor");
   const [password, setPassword] = useState("");
   const [tags, setTags] = useState<string[]>([]);
   const [bio, setBio] = useState("");
@@ -18,17 +22,10 @@ const Register = () => {
   const [error, setError] = useState("");
   const [created, setCreated] = useState(false);
 
+  const router = useRouter();
+
   const nextFormStep = () => {
     if (formStep === 3) {
-      console.log({
-        firstName,
-        lastName,
-        tgUsername,
-        password,
-        tags,
-        bio,
-        photos,
-      });
       try {
         fetch("/api/auth/register", {
           method: "POST",
@@ -38,13 +35,30 @@ const Register = () => {
           body: JSON.stringify({
             firstName,
             lastName,
+            course,
+            sex,
             tgUsername,
             password,
             tags,
             bio,
             photos,
           }),
+        }).then(() => {
+          signIn("credentials", {
+            redirect: false,
+            username: tgUsername,
+            password: password,
+            // @ts-ignore
+          }).then(({ error }) => {
+            if (error) {
+              console.log(error);
+            } else {
+              router.refresh();
+              router.push("/main");
+            }
+          });
         });
+        setCreated(true);
       } catch (e) {
         console.log(e);
       }
@@ -86,6 +100,10 @@ const Register = () => {
               setTgUsername,
               password,
               setPassword,
+              sex,
+              setSex,
+              course,
+              setCourse,
             }}
           />
         )}

@@ -7,7 +7,6 @@ export async function POST(req: Request) {
     tgUsername,
     firstName,
     lastName,
-    university,
     bio,
     course,
     photos,
@@ -30,13 +29,16 @@ export async function POST(req: Request) {
           create: {
             firstName,
             lastName,
-            university,
             bio,
             course,
-            photos,
             sex,
             randomMeetingPool: {
               create: {},
+            },
+            photos: {
+              create: photos.map((photo: string) => ({
+                imagePath: photo,
+              })),
             },
           },
         },

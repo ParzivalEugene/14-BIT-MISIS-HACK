@@ -14,6 +14,10 @@ interface NameStepProps {
     setTgUsername: (value: string) => void;
     password: string;
     setPassword: (value: string) => void;
+    sex: string;
+    setSex: (value: string) => void;
+    course: string;
+    setCourse: (value: string) => void;
   };
 }
 
@@ -61,9 +65,15 @@ const NameStep: React.FC<NameStepProps> = ({
           </div>
           <div className="flex flex-col gap-2">
             <h2 className="pl-4">Пол</h2>
-            <Tabs aria-label="Options" color="secondary" variant="bordered">
+            <Tabs
+              aria-label="Options"
+              color="secondary"
+              variant="bordered"
+              selectedKey={data.sex}
+              onSelectionChange={data.setSex}
+            >
               <Tab
-                key="man"
+                key="Man"
                 title={
                   <div className="flex items-center space-x-2">
                     <span>Мужской</span>
@@ -71,7 +81,7 @@ const NameStep: React.FC<NameStepProps> = ({
                 }
               />
               <Tab
-                key="woman"
+                key="Woman"
                 title={
                   <div className="flex items-center space-x-2">
                     <span>Женский</span>
@@ -82,9 +92,15 @@ const NameStep: React.FC<NameStepProps> = ({
           </div>
           <div className="flex flex-col gap-2">
             <h2 className="pl-4">Курс</h2>
-            <Tabs aria-label="Options" color="secondary" variant="bordered">
+            <Tabs
+              aria-label="Options"
+              color="secondary"
+              variant="bordered"
+              selectedKey={data.course}
+              onSelectionChange={data.setCourse}
+            >
               <Tab
-                key="bac"
+                key="Bachelor"
                 title={
                   <div className="flex items-center space-x-2">
                     <span>Бакалавриат</span>
@@ -92,7 +108,7 @@ const NameStep: React.FC<NameStepProps> = ({
                 }
               />
               <Tab
-                key="mag"
+                key="Master"
                 title={
                   <div className="flex items-center space-x-2">
                     <span>Магистратура</span>
