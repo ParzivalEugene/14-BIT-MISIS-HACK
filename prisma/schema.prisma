@@ -1,6 +1,43 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+enum universityEnum {
+  demo
+  // TODO: parse this shit https://en.misis.ru/academics/undergradute/
+}
+
+enum CourseEnum {
+  Bachelor
+  Master
+  phd
+}
+
+enum TagsEnum {
+  IT
+  Design
+  Linguistics
+  Physics
+  Hobby
+  Music
+  Animals
+  Programming
+  WebDevelopment
+  MobileDevelopment
+  DataAnalysis
+  ArtificialIntelligence
+  ProgrammingLanguages
+  GraphicDesign
+  Photography
+  Literature
+  Sports
+  Travel
+  Cooking
+  Ecology
+  Psychology
+  Medicine
+  Business
+}
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -12,7 +49,22 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  email    String @unique
-  password String
+  id           Int            @id @default(autoincrement())
+  email        String         @unique
+  password     String
+  tgUsername   String         @unique
+  firstName    String
+  lastName     String
+  bio          String?
+  university   universityEnum
+  course       CourseEnum
+  tags         String[]
+  mainFriendId Int?
+  mainFriend   User?          @relation("MainFriend", fields: [mainFriendId], references: [id])
+  friend       User[]         @relation("MainFriend")
+}
+
+model Pool {
+  id       Int      @id @default(autoincrement())
+  
 }
