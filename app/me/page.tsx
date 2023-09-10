@@ -3,6 +3,7 @@
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import { Button, NextUIProvider, Progress } from "@nextui-org/react";
+import Link from "next/link";
 import { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 
@@ -52,12 +53,16 @@ const Profile = () => {
               <h3 className="text-2xl font-bold">Коллекция MISIS&nbsp;ID</h3>
             </div>
             <div className="flex gap-6">
-              <Button color="secondary" className="w-full">
-                Настройки
-              </Button>
-              <Button color="secondary" variant="shadow" className="w-full">
-                Уведомления
-              </Button>
+              <Link href={"/"} className="w-full">
+                <Button color="secondary" className="w-full">
+                  Настройки
+                </Button>
+              </Link>
+              <Link href={"/me/notifications"} className="w-full">
+                <Button color="secondary" variant="shadow" className="w-full">
+                  Уведомления
+                </Button>
+              </Link>
             </div>
           </div>
         </main>
