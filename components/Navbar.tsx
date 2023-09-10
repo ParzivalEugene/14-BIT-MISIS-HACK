@@ -1,11 +1,70 @@
-import React from 'react'
+import { Tab, Tabs } from "@nextui-org/react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useState } from "react";
 
 const Navbar = () => {
-  return (
-    <nav>
-        
-    </nav>
-  )
-}
+  const pathname = usePathname();
+  const [active, setActive] = useState(pathname.slice(1));
 
-export default Navbar
+  return (
+    <nav className="fixed bottom-4 w-full right-0 px-4">
+      <Tabs
+        aria-label="Options"
+        color="secondary"
+        variant="bordered"
+        classNames={{
+          base: "w-full",
+          tabList: "gap-12 px-6 w-full ",
+          tab: "py-4 h-10",
+        }}
+        selectedKey={active}
+        onSelectionChange={setActive}
+      >
+        <Tab
+          key="main"
+          title={
+            <Link href={"/main"}>
+              <div className="flex items-center gap-2 flex-col">
+                <Image src="/main-grid.png" width={32} height={32} alt="grid" />
+              </div>
+            </Link>
+          }
+        />
+        <Tab
+          key="match"
+          title={
+            <Link href={"/match"}>
+              <div className="flex items-center gap-2 flex-col">
+                <Image
+                  src="/match-grid.png"
+                  width={32}
+                  height={32}
+                  alt="grid"
+                />
+              </div>
+            </Link>
+          }
+        />
+        <Tab
+          key="me"
+          title={
+            <Link href={"/me"}>
+              <div className="flex items-center gap-2 flex-col">
+                <Image
+                  src="/profile-grid.png"
+                  width={32}
+                  height={32}
+                  alt="grid"
+                />
+              </div>
+            </Link>
+          }
+        />
+      </Tabs>
+    </nav>
+  );
+};
+
+export default Navbar;

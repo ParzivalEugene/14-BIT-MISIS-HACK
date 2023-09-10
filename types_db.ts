@@ -199,17 +199,17 @@ export interface Database {
         Row: {
           id: number
           password: string
-          tgUsername: string
+          username: string
         }
         Insert: {
           id?: number
           password: string
-          tgUsername: string
+          username: string
         }
         Update: {
           id?: number
           password?: string
-          tgUsername?: string
+          username?: string
         }
         Relationships: []
       }

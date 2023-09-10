@@ -10,8 +10,8 @@ interface NameStepProps {
     setFirstName: (value: string) => void;
     lastName: string;
     setLastName: (value: string) => void;
-    tgUsername: string;
-    setTgUsername: (value: string) => void;
+    username: string;
+    setUsername: (value: string) => void;
     password: string;
     setPassword: (value: string) => void;
     sex: string;
@@ -52,8 +52,8 @@ const NameStep: React.FC<NameStepProps> = ({
               variant="bordered"
               type="text"
               label="Telegram (через @)"
-              onChange={(e) => data.setTgUsername(e.target.value)}
-              value={data.tgUsername}
+              onChange={(e) => data.setUsername(e.target.value)}
+              value={data.username}
             />
             <Input
               variant="bordered"

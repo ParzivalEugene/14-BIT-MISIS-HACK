@@ -41,7 +41,7 @@ const InterestsStep: React.FC<InterestsStepProps> = ({
           className="gap-1"
           orientation="horizontal"
           value={data.tags}
-          onChange={data.setTags}
+          onValueChange={data.setTags}
         >
           {tags.map((tag) => (
             <CustomCheckbox key={tag} value={tag}>
@@ -53,7 +53,9 @@ const InterestsStep: React.FC<InterestsStepProps> = ({
           className="mt-6"
           labelPlacement="outside"
           placeholder="Расскажи немного о себе"
-          onChange={(e) => data.setBio(e.target.value)}
+          onChange={(e) => {
+            data.setBio(e.target.value);
+          }}
           value={data.bio}
         />
       </form>
