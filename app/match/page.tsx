@@ -2,7 +2,7 @@
 
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
-import { Card } from "@nextui-org/react";
+import { Card, CardBody, Chip } from "@nextui-org/react";
 import { useState } from "react";
 import TinderCard from "react-tinder-card";
 
@@ -13,6 +13,7 @@ const data = [
     lastName: "Мичкова",
     courser: "Бакалавриат",
     tags: ["Фильмы", "IT", "Клубы"],
+    image: "/students/1.jpg",
   },
   {
     username: "@nagibator228",
@@ -20,6 +21,7 @@ const data = [
     lastName: "Петров",
     courser: "Бакалавриат",
     tags: ["Хакатоны", "Музыка", "Кошки"],
+    image: "/students/2.jpg",
   },
   {
     username: "@ivan_ivanov",
@@ -27,6 +29,7 @@ const data = [
     lastName: "Иванов",
     courser: "Бакалавриат",
     tags: ["Футбол", "Путешествия", "Книги"],
+    image: "/students/3.jpg",
   },
   {
     username: "@maria_smirnova",
@@ -34,6 +37,7 @@ const data = [
     lastName: "Смирнова",
     courser: "Магистратура",
     tags: ["Искусство", "Мода", "Кофе"],
+    image: "/students/4.jpg",
   },
   {
     username: "@sergey_kuznetsov",
@@ -41,6 +45,7 @@ const data = [
     lastName: "Кузнецов",
     courser: "Бакалавриат",
     tags: ["Музыка", "Кино", "Еда"],
+    image: "/students/5.jpg",
   },
   {
     username: "@anna_petrova",
@@ -48,6 +53,7 @@ const data = [
     lastName: "Петрова",
     courser: "Магистратура",
     tags: ["Танцы", "Живопись", "Путешествия"],
+    image: "/students/6.jpg",
   },
   {
     username: "@dmitry_sokolov",
@@ -55,6 +61,7 @@ const data = [
     lastName: "Соколов",
     courser: "Бакалавриат",
     tags: ["Футбол", "Компьютеры", "Кофе"],
+    image: "/students/7.jpg",
   },
   {
     username: "@ekaterina_kovaleva",
@@ -62,6 +69,7 @@ const data = [
     lastName: "Ковалева",
     courser: "Магистратура",
     tags: ["Мода", "Кино", "Еда"],
+    image: "/students/8.jpg",
   },
   {
     username: "@alexey_nikitin",
@@ -69,6 +77,7 @@ const data = [
     lastName: "Никитин",
     courser: "Бакалавриат",
     tags: ["Музыка", "Компьютеры", "Кофе"],
+    image: "/students/9.jpg",
   },
   {
     username: "@olga_ivanova",
@@ -76,6 +85,7 @@ const data = [
     lastName: "Иванова",
     courser: "Магистратура",
     tags: ["Танцы", "Живопись", "Путешествия"],
+    image: "/students/10.jpg",
   },
   {
     username: "@maxim_kozlov",
@@ -83,6 +93,7 @@ const data = [
     lastName: "Козлов",
     courser: "Бакалавриат",
     tags: ["Футбол", "Книги", "Кофе"],
+    image: "/students/11.jpg",
   },
   {
     username: "@anna_sidorova",
@@ -90,6 +101,7 @@ const data = [
     lastName: "Сидорова",
     courser: "Магистратура",
     tags: ["Искусство", "Мода", "Кофе"],
+    image: "/students/12.jpg",
   },
   {
     username: "@nikita_romanov",
@@ -97,6 +109,7 @@ const data = [
     lastName: "Романов",
     courser: "Бакалавриат",
     tags: ["Музыка", "Кино", "Еда"],
+    image: "/students/13.jpg",
   },
   {
     username: "@marina_kuzmina",
@@ -104,6 +117,7 @@ const data = [
     lastName: "Кузьмина",
     courser: "Магистратура",
     tags: ["Танцы", "Живопись", "Путешествия"],
+    image: "/students/14.jpg",
   },
   {
     username: "@alexandra_ivanova",
@@ -111,6 +125,7 @@ const data = [
     lastName: "Иванова",
     courser: "Бакалавриат",
     tags: ["Футбол", "Компьютеры", "Кофе"],
+    image: "/students/15.jpg",
   },
   {
     username: "@dmitry_kuzmin",
@@ -118,6 +133,7 @@ const data = [
     lastName: "Кузьмин",
     courser: "Магистратура",
     tags: ["Искусство", "Мода", "Кофе"],
+    image: "/students/16.jpg",
   },
   {
     username: "@maria_romanova",
@@ -125,6 +141,7 @@ const data = [
     lastName: "Романова",
     courser: "Бакалавриат",
     tags: ["Музыка", "Кино", "Еда"],
+    image: "/students/17.jpg",
   },
   {
     username: "@alexey_sokolov",
@@ -132,6 +149,7 @@ const data = [
     lastName: "Соколов",
     courser: "Магистратура",
     tags: ["Танцы", "Живопись", "Путешествия"],
+    image: "/students/18.jpg",
   },
 ];
 
@@ -145,7 +163,7 @@ const Match = () => {
   };
 
   return (
-    <div className="">
+    <div className="pt-6">
       <Header />
       <main className="relative">
         {data.map((user, index) => (
@@ -154,12 +172,30 @@ const Match = () => {
             className="absolute m-auto left-4 right-4 top-6"
             onSwipe={(dir) => swiped(dir, user.firstName)}
           >
-            <Card isFooterBlurred radius="lg" className="border-none">
+            <Card
+              radius="lg"
+              className="border-none"
+              classNames={{
+                footer: "flex flex-col",
+              }}
+            >
               <img
-                src={"/girl1.png"}
+                src={user.image}
                 alt="grid"
                 className="object-cover w-full h-[600px]"
               />
+              <CardBody>
+                <h1>
+                  {user.firstName}, {user.courser}
+                </h1>
+                <div className="flex gap-2">
+                  {user.tags.map((tag, index) => (
+                    <Chip color="secondary" key={index}>
+                      {tag}
+                    </Chip>
+                  ))}
+                </div>
+              </CardBody>
             </Card>
           </TinderCard>
         ))}

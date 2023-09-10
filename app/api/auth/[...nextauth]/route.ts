@@ -26,14 +26,14 @@ export const authOptions: NextAuthOptions = {
           },
         });
         // if user doesn't exist or password doesn't match
-        console.log("user", user);
         if (!user || !(await compare(password, user.password))) {
           throw new Error("Invalid username or password");
         }
+        console.log("user", user);
         return user;
       },
     }),
-  ]
+  ],
 };
 
 const handler = NextAuth(authOptions);
