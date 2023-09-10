@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <NextUIProvider>
-      <div className="flex items-center h-screen p-8 font-steppe">
+      <div className="flex items-center h-screen p-8 font-steppe md:hidden">
         <div className="flex items-center flex-col w-full gap-16">
           <div className="flex flex-col items-center gap-4">
             <Image src={"logo.svg"} width={58} height={68} alt="logo" />
@@ -27,6 +27,9 @@ export default function Home() {
             </Link>
           </div>
         </div>
+      </div>
+      <div className="hidden md:block">
+        <h1 className="color">Пожалуйста используйте мобильный телефон!</h1>
       </div>
     </NextUIProvider>
   );

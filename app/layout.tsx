@@ -1,7 +1,6 @@
 import Provider from "@/components/Provider";
 import AuthStatus from "@/components/auth-status";
 import "@/styles/globals.css";
-import { Navbar } from "@nextui-org/react";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
@@ -23,7 +22,6 @@ export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
-  session: any;
 }) {
   return (
     <Provider>

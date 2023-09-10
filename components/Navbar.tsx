@@ -9,13 +9,13 @@ const Navbar = () => {
   const [active, setActive] = useState(pathname.split("/")[1]);
 
   return (
-    <nav className="fixed bottom-4 w-full right-0 px-4">
+    <nav className="fixed bottom-4 left-4 px-4">
       <Tabs
         aria-label="Options"
         color="secondary"
         variant="bordered"
         classNames={{
-          base: "w-full",
+          base: "bg-[#170E27] rounded-2xl",
           tabList: "gap-12 px-6 w-full ",
           tab: "py-4 h-10",
         }}

@@ -3,19 +3,24 @@
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import { Button, NextUIProvider, Progress } from "@nextui-org/react";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactCardFlip from "react-card-flip";
 
 const Profile = () => {
   const [isFlipped, setIsFlipped] = useState(false);
+  const data = useSession();
+
+  useEffect(() => {
+    console.log(data);
+  })
 
   return (
     <NextUIProvider>
       <div className="p-6">
         <Header />
-        <main className="pt-12">
-          {/* <Card /> */}
+        <main className="pt-12 relative">
           <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
             <img
               src="/connect-mock.png"
@@ -49,9 +54,18 @@ const Profile = () => {
             <Button className="bg-gradient-to-r from-purple-900 to-purple-400 font-bold">
               Ежедневные задания
             </Button>
-            <div className="grid grid-cols-2 p-6 bg-[#170E27] rounded-2xl">
-              <h3 className="text-2xl font-bold">Коллекция MISIS&nbsp;ID</h3>
-            </div>
+            <Link href={"/me/cards"}>
+              <div className="grid grid-cols-2 bg-[#170E27] rounded-2xl relative overflow-clip">
+                <h3 className="text-2xl font-bold p-6">
+                  Коллекция MISIS&nbsp;ID
+                </h3>
+                <img
+                  src="/card-collection-preview.png"
+                  alt="card"
+                  className="h-full absolute right-0"
+                />
+              </div>
+            </Link>
             <div className="flex gap-6">
               <Link href={"/"} className="w-full">
                 <Button color="secondary" className="w-full">
@@ -65,6 +79,7 @@ const Profile = () => {
               </Link>
             </div>
           </div>
+          <p>{data.data?.user?.image}</p>
         </main>
         <Navbar />
       </div>

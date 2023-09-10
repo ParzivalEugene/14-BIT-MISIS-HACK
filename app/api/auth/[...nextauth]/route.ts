@@ -8,7 +8,7 @@ export const authOptions: NextAuthOptions = {
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        username: { label: "Username", type: "text" },
+        username: { label: "Username", type: "text", placeholder: "jsmith" },
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials: { username: string; password: string }) {
@@ -26,14 +26,14 @@ export const authOptions: NextAuthOptions = {
           },
         });
         // if user doesn't exist or password doesn't match
+        console.log("user", user);
         if (!user || !(await compare(password, user.password))) {
-          console.log("user", user);
           throw new Error("Invalid username or password");
         }
         return user;
       },
     }),
-  ],
+  ]
 };
 
 const handler = NextAuth(authOptions);
