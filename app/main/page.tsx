@@ -4,6 +4,7 @@ import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
+import Link from "next/link";
 
 const Main = () => {
   const data = useSession();
@@ -11,19 +12,21 @@ const Main = () => {
     <div className="p-6">
       <Header />
       <main className="flex flex-col w-full gap-4 mt-12">
-        <div className="bg-[#856E1D] flex justify-between items-center px-4 rounded-lg h-[106px] relative">
-          <Image
-            src={"/flag.png"}
-            alt="flag"
-            width={168}
-            height={171}
-            className="absolute bottom-0"
-          />
-          <div></div>
-          <p className="w-min text-right font-bold text-xl">
-            Групповые встречи
-          </p>
-        </div>
+        <Link href={"/main/meetups"}>
+          <div className="bg-[#856E1D] flex justify-between items-center px-4 rounded-lg h-[106px] relative">
+            <Image
+              src={"/flag.png"}
+              alt="flag"
+              width={168}
+              height={171}
+              className="absolute bottom-0"
+            />
+            <div></div>
+            <p className="w-min text-right font-bold text-xl">
+              Групповые встречи
+            </p>
+          </div>
+        </Link>
         <div className="grid gap-4 grid-cols-2">
           <div className="flex gap-4 flex-col h-full">
             <div className="bg-[#0E5011] w-full rounded-lg relative min-h-[110px] flex flex-col justify-between">
@@ -60,19 +63,21 @@ const Main = () => {
               />
               <p className="font-bold text-xl text-center pt-2">Анон-чат</p>
             </div>
-            <div className="bg-[#2F0082] w-full rounded-lg overflow-clip relative h-[106px] flex items-center justify-between">
-              <Image
-                src={"/itam-bot.png"}
-                alt="itam-bot"
-                width={109}
-                height={109}
-                className="absolute -left-10"
-              />
-              <div></div>
-              <p className="font-bold text-xl w-min text-right pr-4">
-                Itam Bot
-              </p>
-            </div>
+            <Link href={"https://t.me/itatmisis_bot"}>
+              <div className="bg-[#2F0082] w-full rounded-lg overflow-clip relative h-[106px] flex items-center justify-between">
+                <Image
+                  src={"/itam-bot.png"}
+                  alt="itam-bot"
+                  width={109}
+                  height={109}
+                  className="absolute -left-10"
+                />
+                <div></div>
+                <p className="font-bold text-xl w-min text-right pr-4">
+                  Itam Bot
+                </p>
+              </div>
+            </Link>
             <div className="bg-[#091B5A] w-full rounded-lg relative p-2">
               <Image
                 src={"/midjourney.png"}

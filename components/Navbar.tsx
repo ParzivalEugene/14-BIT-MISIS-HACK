@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const Navbar = () => {
   const pathname = usePathname();
-  const [active, setActive] = useState(pathname.slice(1));
+  const [active, setActive] = useState(pathname.split("/")[1]);
 
   return (
     <nav className="fixed bottom-4 w-full right-0 px-4">
