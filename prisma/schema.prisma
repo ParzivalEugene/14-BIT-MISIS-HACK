@@ -1,12 +1,5 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-enum CourseEnum {
-  Bachelor
-  Master
-  phd
-}
-
 enum Sex {
   Man
   Woman
@@ -30,22 +23,22 @@ model Photo {
 }
 
 model Profile {
-  id        Int        @id @default(autoincrement())
-  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId    Int        @unique
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    Int      @unique
   firstName String
   lastName  String
-  bio       String?    @db.VarChar(150)
+  bio       String?  @db.VarChar(150)
   sex       Sex
   tags      String[]
-  course    CourseEnum @default(Bachelor)
+  course    String
   photos    Photo[]
 
   mainFriendId Int?
   mainFriend   Profile?  @relation("MainFriend", fields: [mainFriendId], references: [id])
   friends      Profile[] @relation("MainFriend")
 
-  randomMeetingPool   RandomMeetingPool @relation(fields: [randomMeetingPoolId], references: [id], onDelete: Cascade)
+  randomMeetingPool   RandomMeetingPool @relation(fields: [randomMeetingPoolId], references: [id])
   randomMeetingPoolId Int
 
   matchingPoolMain      MatchingPool[] @relation("MatchingPoolMain")
@@ -67,6 +60,8 @@ model User {
 model RandomMeetingPool {
   id        Int       @id @default(autoincrement())
   profiles  Profile[]
+  time      DateTime  @default(now())
+  place     String    @default("Online")
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }

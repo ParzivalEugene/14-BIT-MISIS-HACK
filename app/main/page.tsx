@@ -40,17 +40,19 @@ const Main = () => {
                 <p className="font-bold text-xl text-center">Расписание</p>
               </div>
             </Link>
-            <div className="bg-[#51124E] w-full rounded-lg relative h-full flex justify-between p-3 overflow-clip flex-col">
-              <Image
-                src={"/target.png"}
-                alt="target"
-                width={222}
-                height={273}
-                className="absolute -left-4"
-              />
-              <div></div>
-              <p className="font-bold text-xl text-center">Мэтчи</p>
-            </div>
+            <Link href={"/match"} className="h-full">
+              <div className="bg-[#51124E] w-full rounded-lg relative h-full flex justify-between p-3 overflow-clip flex-col">
+                <Image
+                  src={"/target.png"}
+                  alt="target"
+                  width={222}
+                  height={273}
+                  className="absolute -left-4"
+                />
+                <div></div>
+                <p className="font-bold text-xl text-center">Мэтчи</p>
+              </div>
+            </Link>
           </div>
           <div className="flex flex-col gap-4">
             <Link href={"https://t.me/Misis_anon_Bot"}>

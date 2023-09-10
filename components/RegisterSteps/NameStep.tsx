@@ -100,7 +100,7 @@ const NameStep: React.FC<NameStepProps> = ({
               onSelectionChange={data.setCourse}
             >
               <Tab
-                key="Bachelor"
+                key="Бакалавриат"
                 title={
                   <div className="flex items-center space-x-2">
                     <span>Бакалавриат</span>
@@ -108,7 +108,7 @@ const NameStep: React.FC<NameStepProps> = ({
                 }
               />
               <Tab
-                key="Master"
+                key="Магистратура"
                 title={
                   <div className="flex items-center space-x-2">
                     <span>Магистратура</span>

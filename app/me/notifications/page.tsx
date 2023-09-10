@@ -2,6 +2,7 @@
 import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import { Button } from "@nextui-org/react";
+import Link from "next/link";
 
 const viewed = [
   "Вам назначена встреча!",
@@ -11,7 +12,10 @@ const viewed = [
   "Мэтч! Скорее познакомьтесь",
 ];
 
-const notifications = ["Вам назначена встреча!", "Мэтч! Скорее познакомьтесь"];
+const notifications = [
+  { text: "Вам назначена встреча!", link: "/main/meetups" },
+  { text: "Мэтч! Скорее познакомьтесь", link: "/match" },
+];
 
 const Notifications = () => {
   return (
@@ -22,9 +26,11 @@ const Notifications = () => {
         <h2>Новые</h2>
         <div className="w-full flex flex-col gap-2">
           {notifications.map((notification, index) => (
-            <Button key={index} color="secondary">
-              {notification}
-            </Button>
+            <Link href={notification.link} key={index} className="w-full">
+              <Button color="secondary" className="w-full">
+                {notification.text}
+              </Button>
+            </Link>
           ))}
         </div>
         <h2 className="mt-12">Просмотренные</h2>

@@ -10,6 +10,7 @@ export async function POST(req: Request) {
     bio,
     course,
     photos,
+    tags,
     sex,
     password,
   } = await req.json();
@@ -32,6 +33,7 @@ export async function POST(req: Request) {
             bio,
             course,
             sex,
+            tags,
             randomMeetingPool: {
               create: {},
             },

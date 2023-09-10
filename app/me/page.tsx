@@ -12,10 +12,6 @@ const Profile = () => {
   const [isFlipped, setIsFlipped] = useState(false);
   const data = useSession();
 
-  useEffect(() => {
-    console.log(data);
-  })
-
   return (
     <NextUIProvider>
       <div className="p-6">
@@ -79,7 +75,6 @@ const Profile = () => {
               </Link>
             </div>
           </div>
-          <p>{data.data?.user?.image}</p>
         </main>
         <Navbar />
       </div>

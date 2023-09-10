@@ -13,19 +13,19 @@ interface InterestsStepProps {
   };
 }
 
-const tags = [
-  "IT",
-  "Design",
-  "Linguistics",
-  "Physics",
-  "Music",
-  "Animals",
-  "Programming",
-  "WebDevelopment",
-  "MobileDevelopment",
-  "DataAnalysis",
-  "ProgrammingLanguages",
-  "GraphicDesign",
+export const tags = [
+  "Фильмы",
+  "Видеоигры",
+  "Разработка",
+  "Искусство",
+  "Литература",
+  "Дизайн",
+  "Путешествия",
+  "Музыка",
+  "Животные",
+  "Клубы",
+  "Друзья",
+  "Программирование",
 ];
 
 const InterestsStep: React.FC<InterestsStepProps> = ({
