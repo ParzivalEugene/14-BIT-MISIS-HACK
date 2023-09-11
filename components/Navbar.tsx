@@ -38,7 +38,7 @@ const Navbar = () => {
             <Link href={"/match"}>
               <div className="flex items-center gap-2 flex-col">
                 <Image
-                  src="/match-grid.png"
+                  src="/logo.png"
                   width={32}
                   height={32}
                   alt="grid"

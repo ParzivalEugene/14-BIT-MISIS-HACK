@@ -4,8 +4,31 @@ import Header from "@/components/Header";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect } from "react";
 
 const Main = () => {
+  useEffect(() => {
+    fetch("/api/addFriend", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        userId1: 13,
+        userId2: 14,
+      }),
+    })
+      .then((res) => {
+        const result = res.json();
+        result
+          .then((res) => {
+            console.log(res);
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return (
     <div className="p-6">
       <Header />

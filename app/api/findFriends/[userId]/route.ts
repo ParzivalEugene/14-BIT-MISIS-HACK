@@ -14,13 +14,23 @@ export async function GET(
   if (!profile) {
     return NextResponse.json({ error: "Profile not found" }, { status: 404 });
   }
+  const friends = await prisma.matchingPool.findMany({
+    where: {
+      profileId: Number(profile.id),
+    },
+  });
+  const friendIds = friends
+    .map((friend) => friend.possibleFriendId)
+    .concat(profile.id);
   const profiles = await prisma.profile.findMany({
     include: {
       photos: true,
     },
     where: {
-      userId: {
-        not: Number(userId),
+      id: {
+        not: {
+          in: friendIds,
+        },
       },
     },
   });

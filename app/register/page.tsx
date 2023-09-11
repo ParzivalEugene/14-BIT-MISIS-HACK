@@ -138,6 +138,7 @@ const Register = () => {
                 <Progress
                   aria-label="Progress"
                   value={(formStep * 100) / maxSteps}
+                  color="secondary"
                   classNames={{
                     indicator: "bg-gradient-to-r from-purple-700 to-purple-300",
                   }}

@@ -33,13 +33,13 @@ const Login = () => {
       <div className="flex items-center h-screen p-8 font-steppe">
         <div className="flex items-center flex-col w-full gap-24">
           <div className="flex flex-col items-center gap-4">
-            <Image src={"logo.svg"} width={58} height={68} alt="logo" />
+            <Image src={"/logo.png"} width={72} height={72} alt="logo" />
             <h1 className="font-bold text-3xl bg-gradient-to-r from-purple-700 to-purple-300 bg-clip-text text-transparent">
-              MISIS CONNECT
+              CONNECT
             </h1>
           </div>
           <div className="w-full">
-            <h2 className="text-center mb-6">Вход в MISIS connect</h2>
+            <h2 className="text-center mb-6">Вход в CONNECT</h2>
             <div className="flex flex-col w-full gap-4">
               <Input
                 variant="bordered"
